@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Andiamo ad settare il listener del click su un elemento della lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override //parent è un riferimento al ListView, view è il riferimento della View cliccata e position è la sua posizione nella lista
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String nomeContatto = (String) listView.getItemAtPosition(position);
