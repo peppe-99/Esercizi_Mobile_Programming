@@ -1,18 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Espressione -->
+        <LinearLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEspressioneText"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Espressione: "
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvEspressione"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedbutton"
+                android:paddingLeft="5dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Risultato -->
+        <LinearLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvRisultatoText"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Risultato: "
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:background="@drawable/roundedbutton"
+                android:id="@+id/tvRisultato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingRight="5dp"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Memory -->
+        <LinearLayout
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvMemoryText"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Memory: "
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:background="@drawable/roundedbutton"
+                android:id="@+id/tvMemory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingRight="5dp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <!-- Bottoni della Calcolatrice -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Prima serie di bottoni -->
+                <GridLayout
+                    android:id="@+id/calculatorFirstRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:columnCount="4"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:rowCount="1">
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonC"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="cancellaEspressione"
+                        android:text="C" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonMC"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="cancellaMemory"
+                        android:text="MC" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonMS"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="salvaMemoria"
+                        android:text="MS" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonMR"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="usaMemoria"
+                        android:text="MR" />
+                </GridLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <!-- Restanti bottoni (numeri ed operazioni) -->
+                <GridLayout
+                    android:id="@+id/NumOpButtons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="0dp"
+                    android:columnCount="4"
+                    android:rowCount="4">
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button7"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="7" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button8"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="8" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button9"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="9" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonSum"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiOperazione"
+                        android:text="+" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button4"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="4" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button5"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="5" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button6"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="6" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonLess"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiOperazione"
+                        android:text="-" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button1"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="1" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button2"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="2" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button3"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="3" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonMoltiplication"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiOperazione"
+                        android:text="*" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonFloat"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiOperazione"
+                        android:text="." />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/button0"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiNumero"
+                        android:text="0" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonEnter"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiInvio"
+                        android:text="=" />
+
+                    <Button
+                        android:layout_margin="1dp"
+                        android:id="@+id/buttonDivision"
+                        android:background="@drawable/roundedbutton"
+                        android:onClick="premiOperazione"
+                        android:text="/" />
+
+                </GridLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
