@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private int risposte_totali = 0;
 
     private boolean[] suggerimentoVisto;
+    private boolean[] domandeRisposte;
 
     private TextView tvNumeroQuesito;
     private TextView tvQuesito;
@@ -35,12 +36,16 @@ public class MainActivity extends AppCompatActivity {
         quesiti.add(new Quesito("Il gallo fa le uova?", false));
         quesiti.add(new Quesito("Il risultato di 1 + 1 è 2 ?", true));
         quesiti.add(new Quesito("Mischiare rosso e blu ci da il viola?", true));
-        quesiti.add(new Quesito("Dio è un maiale?", true));
+        quesiti.add(new Quesito("Elisabetta fa le perete a ping pong?", true));
         quesiti.add(new Quesito("Il risultato di 6 - 5 è 2?", false));
         quesiti.add(new Quesito("Il risultato di 6 * 5 è 65?", false));
 
         suggerimentoVisto = new boolean[quesiti.size()];
         for(Boolean b : suggerimentoVisto) {
+            b = false;
+        }
+        domandeRisposte = new boolean[quesiti.size()];
+        for(Boolean b : domandeRisposte) {
             b = false;
         }
 
@@ -77,37 +82,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rispondiVero(View view) {
-        risposte_totali++;
-        Quesito q = quesiti.get(quesito_corrente);
-        boolean risposta = q.getRisposto();
+        if(domandeRisposte[quesito_corrente] == false) {
+            risposte_totali++;
+            Quesito q = quesiti.get(quesito_corrente);
+            boolean risposta = q.getRisposto();
 
-        if(risposta == true) {
-            if(suggerimentoVisto[quesito_corrente] == false) {
-                rispote_corrette_valide++;
+            if (risposta == true) {
+                if (suggerimentoVisto[quesito_corrente] == false) {
+                    rispote_corrette_valide++;
+                } else {
+                    risposte_corrette_non_valide++;
+                }
             }
-            else {
-                risposte_corrette_non_valide++;
-            }
+            domandeRisposte[quesito_corrente] = true;
+            domandaSuccessiva(null);
         }
-
-        domandaSuccessiva(null);
     }
 
     public void risondiFalso(View view) {
-        risposte_totali++;
-        Quesito q = quesiti.get(quesito_corrente);
-        boolean risposta = q.getRisposto();
+        if(domandeRisposte[quesito_corrente] == false) {
+            risposte_totali++;
+            Quesito q = quesiti.get(quesito_corrente);
+            boolean risposta = q.getRisposto();
 
-        if(risposta == false) {
-            if(suggerimentoVisto[quesito_corrente] == false) {
-                rispote_corrette_valide++;
+            if (risposta == false) {
+                if (suggerimentoVisto[quesito_corrente] == false) {
+                    rispote_corrette_valide++;
+                } else {
+                    risposte_corrette_non_valide++;
+                }
             }
-            else {
-                risposte_corrette_non_valide++;
-            }
+            domandeRisposte[quesito_corrente] = true;
+            domandaSuccessiva(null);
         }
-
-        domandaSuccessiva(null);
     }
 
     @Override
