@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <GridLayout
+        android:id="@+id/griglia"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="3">
+
+        <Button
+            android:id="@+id/buttonInsertA"
+            android:text="INSERT A"
+            android:onClick="insertA"/>
+        <Button
+            android:id="@+id/buttonInsertB"
+            android:text="INSERT B"
+            android:onClick="insertB"/>
+        <Button
+            android:id="@+id/buttonRemoveA"
+            android:text="REMOVE A"
+            android:onClick="removeA"/>
+        <Button
+            android:id="@+id/buttonRemoveB"
+            android:text="REMOVE B"
+            android:onClick="removeB"/>
+        <Button
+            android:id="@+id/buttonAtoB"
+            android:text="A TO B"
+            android:onClick="fA_to_fB"/>
+        <Button
+            android:id="@+id/buttonBtoA"
+            android:text="B TO A"
+            android:onClick="fB_to_fA"/>
+        <Button
+            android:id="@+id/buttonAttachA"
+            android:text="ATTACH A"
+            android:onClick="attachA"/>
+        <Button
+            android:id="@+id/buttonAttachB"
+            android:text="ATTACH B"
+            android:onClick="attachB"/>
+
+        <FrameLayout> </FrameLayout>
+
+        <Button
+            android:id="@+id/buttonDetachA"
+            android:text="DETACH A"
+            android:onClick="detachA"/>
+        <Button
+            android:id="@+id/buttonDetachB"
+            android:text="DETACH B"
+            android:onClick="detachB"/>
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/griglia"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="Message"/>
+
+    <!-- Andrà a contenere i frammenti-->
+    <FrameLayout
+        android:id="@+id/contenitoreFrammenti"
+        android:layout_below="@id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
+
+    </FrameLayout>
+</RelativeLayout>
+
+
+
+
