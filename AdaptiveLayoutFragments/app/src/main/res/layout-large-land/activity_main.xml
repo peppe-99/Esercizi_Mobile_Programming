@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- La device è grande e si trova in landscape, facciamo comparire entrambi i frammenti-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- Il primo frammento è un master, ovvero quel frammento che mostra una lista di oggetti -->
+        <fragment android:name="com.example.adaptivelayoutfragments.fragments.ContactFragment"
+            android:id="@+id/contactFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <!-- Il secondo frammento è un detail, ovvero quel frammento che mostra i dettagli dell'oggetto selezionato nel primo frammento -->
+        <fragment android:name="com.example.adaptivelayoutfragments.fragments.DetailContactFragment"
+            android:id="@+id/detailContactFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
