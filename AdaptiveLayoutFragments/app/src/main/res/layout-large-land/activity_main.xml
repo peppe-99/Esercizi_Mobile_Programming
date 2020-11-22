@@ -10,14 +10,14 @@
         android:orientation="horizontal">
 
         <!-- Il primo frammento è un master, ovvero quel frammento che mostra una lista di oggetti -->
-        <fragment android:name="com.example.adaptivelayoutfragments.fragments.ContactFragment"
+        <fragment android:name="com.example.adaptivelayoutfragments.fragment.FragmentContact"
             android:id="@+id/contactFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
         <!-- Il secondo frammento è un detail, ovvero quel frammento che mostra i dettagli dell'oggetto selezionato nel primo frammento -->
-        <fragment android:name="com.example.adaptivelayoutfragments.fragments.DetailContactFragment"
+        <fragment android:name="com.example.adaptivelayoutfragments.fragment.FragmentlDetailsContact"
             android:id="@+id/detailContactFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
